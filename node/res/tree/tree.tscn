@@ -4,10 +4,4 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_fueac")
-trunk_height = null
-trunk_width = null
-crown_radius = null
-crown_segments = null
-seed_ = null
-trunk_color = null
-crown_color = null
+seed_ = 4042097249
