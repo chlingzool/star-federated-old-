@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://hhprk4i7f1hj"]
+
+[ext_resource type="StyleBox" uid="uid://4hx6mnjdwctl" path="res://assrt/theme/button/disabled.tres" id="1_sp1fr"]
+[ext_resource type="StyleBox" uid="uid://dk4fy2gxr0wxh" path="res://assrt/theme/button/hover.tres" id="2_sp1fr"]
+[ext_resource type="StyleBox" uid="uid://lpr4h3oyiky7" path="res://assrt/theme/button/normal.tres" id="3_f6cud"]
+[ext_resource type="StyleBox" uid="uid://dkbmv4kenkfyx" path="res://assrt/theme/button/pressed.tres" id="4_f6cud"]
+[ext_resource type="StyleBox" uid="uid://cs4hirl1gu085" path="res://assrt/theme/checkbutton/pressed.tres" id="5_f6cud"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ocitb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06ukw"]
+
+[resource]
+Button/font_sizes/font_size = 24
+Button/styles/disabled = ExtResource("1_sp1fr")
+Button/styles/focus = SubResource("StyleBoxEmpty_ocitb")
+Button/styles/hover = ExtResource("2_sp1fr")
+Button/styles/normal = ExtResource("3_f6cud")
+Button/styles/pressed = ExtResource("4_f6cud")
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_06ukw")
+CheckButton/styles/hover_pressed = ExtResource("5_f6cud")
+CheckButton/styles/pressed = ExtResource("5_f6cud")

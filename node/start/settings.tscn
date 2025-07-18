@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://chmmc0cmbj1g1"]
+
+[ext_resource type="Script" uid="uid://dnrox0e2qbdvx" path="res://node/start/settings.gd" id="1_vxmye"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vxmye")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.262745, 0.262745, 0.262745, 1)
+
+[node name="m" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="bar" type="TabContainer" parent="m"]
+layout_mode = 2
+current_tab = 0
+
+[node name="m" type="MarginContainer" parent="m/bar"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+metadata/_tab_index = 0
+
+[node name="s" type="ScrollContainer" parent="m/bar/m"]
+layout_mode = 2
+
+[node name="options" type="VBoxContainer" parent="m/bar/m/s"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="Panel" type="Panel" parent="m/bar/m/s/options"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="m/bar/m/s/options/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="m/bar/m/s/options"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="m/bar/m/s/options/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
