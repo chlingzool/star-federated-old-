@@ -23,6 +23,9 @@ physics_material_override = SubResource("PhysicsMaterial_j2p8m")
 script = ExtResource("1_u8cbx")
 color = Color(0.654232, 0.654232, 0.654232, 1)
 forest_ratio = 0.24
+forest_patch_count = null
+forest_patch_ratio = null
+base_tree_spacing = null
 metadata/plant_type = ""
 
 [node name="cb_area" type="Area2D" parent="."]

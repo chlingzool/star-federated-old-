@@ -57,7 +57,7 @@ func update_tree():
 		var r = crown_radius * 1.22 * (1.0 + noise * 0.7)
 		points2.append(Vector2(r * cos(angle), r * sin(angle) - crown_radius * 0.25))
 	crown2.polygon = points2
-	var lerped_color = crown_color.lerp(Color(0.5, 0.94, 0.46), 0.35)
+	var lerped_color = crown_color.lerp(Color(0.6, 1, 0.46), 0.35)
 	crown2.color = Color(lerped_color.r, lerped_color.g, lerped_color.b, 0.20)
 	crown2.position = Vector2(0,0)
 	crown2.z_index = 0

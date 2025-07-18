@@ -26,6 +26,9 @@ var tree_scene: PackedScene = preload("res://node/res/tree/tree.tscn") # 用于�
 @export var tree_offset: float = 120.0 # 树浮在表面距离
 @export var plain_color: Color = Color(1, 1, 0.9) # 平原区域色
 @export var forest_color: Color = Color(0.8, 1.0, 0.86) # 森林区域色
+@export var forest_patch_count: int = 6 # 森林斑块数量
+@export var forest_patch_ratio: float = 0.1 # 每个斑块占周长比例
+@export var base_tree_spacing: float = 80.0 # 最小树间距
 
 
 func _ready() -> void:
@@ -50,7 +53,7 @@ func found() -> void:
 		"tp":
 			var _color = [Color.FOREST_GREEN, Color.GREEN_YELLOW, Color.LIME_GREEN, Color.DARK_SEA_GREEN][randi() % 4]
 			color = _color
-			spawn_forest_and_plain()
+			spawn_forest_patches_and_plain()
 		"gas":
 			var _color = [Color.GOLD - Color(0, 0, 0, 0.5), Color.DARK_SALMON - Color(0, 0, 0, 0.5), Color.ORANGE - Color(0, 0, 0, 0.5), Color.KHAKI - Color(0, 0, 0, 0.5)][randi() % 4]
 			color = _color
@@ -82,7 +85,7 @@ func updata_for_noise(noise: FastNoiseLite):
 	collision_polygon.set("polygon", points)
 	light_occluder.occluder.set_polygon(points)
 
-func spawn_forest_and_plain():
+func spawn_forest_patches_and_plain():
 	if not tree_scene or polygon.polygon.size() < 2:
 		return
 	# 清理旧树和平原/森林标记
@@ -90,55 +93,47 @@ func spawn_forest_and_plain():
 		if child.name.begins_with("PlanetTree_") or child.name.begins_with("SurfaceMark_"):
 			child.queue_free()
 	var points: Array = polygon.polygon
-	var surface_len = 0.0
-	for i in range(points.size()-1):
-		surface_len += points[i].distance_to(points[i+1])
-	# 自动按星球周长调整树数量
-	var tree_count = int(surface_len * base_tree_density)
-	if tree_count < 2:
-		tree_count = 2
-	# 随机森林起点
-	var forest_start = random.randi_range(0, points.size()-1)
-	var forest_span = int(points.size() * forest_ratio)
-	# 标记森林和平原区域（可视化，仅装饰）
+	# 计算所有斑块总长度
+	var patch_len = int(points.size() * forest_patch_ratio)
 	var forest_indices = []
+	var patch_centers = []
+	# 随机分布斑块中心点
+	for p in range(forest_patch_count):
+		var center = random.randi_range(0, points.size()-1)
+		patch_centers.append(center)
+	# 记录每个斑块的顶点索引
+	for center in patch_centers:
+		for offset in range(-patch_len / float(2), patch_len / float(2)):
+			var idx = (center + offset + points.size()) % points.size()
+			forest_indices.append(idx)
+	var is_forest := []
 	for i in range(points.size()-1):
-		var in_forest = (i >= forest_start and i < forest_start + forest_span) or ((forest_start + forest_span) > points.size()-1 and i < (forest_start + forest_span) % points.size())
-		if visualization:
+		is_forest.append(i in forest_indices)
+		if visualization: # 可视化标记
 			var mark = ColorRect.new()
 			mark.name = "SurfaceMark_%d" % i
-			mark.color = forest_color if in_forest else plain_color
-			# 用小圆点标记（或可换成Polygon2D）
+			mark.color = forest_color if is_forest[i] else plain_color
 			mark.size = Vector2(8,8)
 			mark.position = points[i] - Vector2(4,4)
 			mark.z_index = -5
 			add_child(mark)
-		if in_forest:
-			forest_indices.append(i)
-	# 在森林区域均匀分布树
-	var tree_indices = []
-	if forest_indices.size() > 0:
-		var step = forest_indices.size() / float(tree_count)
-		for n in range(tree_count):
-			var idx = int(forest_indices[ int(n * step) % forest_indices.size() ])
-			tree_indices.append(idx)
-	else:
-		# 极端情况全部是平原，树分布在整个表面
-		var step = (points.size()-1) / float(tree_count)
-		for n in range(tree_count):
-			var idx = int(n * step)
-			tree_indices.append(idx)
-	for t in range(tree_indices.size()):
-		var idx = tree_indices[t]
-		var vertex = points[idx]
-		var normal = (vertex).normalized()
+	# 树分布，按最小树间距采样森林顶点，避免太密
+	var last_tree_pos = null
+	var tree_id = 0
+	for i in range(points.size()-1):
+		if not is_forest[i]:
+			continue
+		var vertex = points[i]
+		var normal = vertex.normalized()
 		var tree_pos = vertex + normal * tree_offset
-		var tree = tree_scene.instantiate()
-		tree.name = "PlanetTree_%d" % t
-		tree.position = tree_pos
-		# 让树竖直于星球表面：法线方向+PI/2
-		tree.rotation = normal.angle() + PI/2
-		add_child(tree)
+		if last_tree_pos == null or tree_pos.distance_to(last_tree_pos) >= base_tree_spacing:
+			var tree = tree_scene.instantiate()
+			tree.name = "PlanetTree_%d" % tree_id
+			tree.position = tree_pos
+			tree.rotation = normal.angle() + PI/2
+			add_child(tree)
+			last_tree_pos = tree_pos
+			tree_id += 1
 
 #func _draw():
 	## 获取遮罩的多边形顶点

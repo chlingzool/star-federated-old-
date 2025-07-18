@@ -1,3 +1,4 @@
+res://node/res/tree/tree.gd
 res://node/start/boot.tscn
 res://node/ui/message/warning.tres
 res://node/ui/message/error.tres
