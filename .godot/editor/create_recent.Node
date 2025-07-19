@@ -1,3 +1,8 @@
+CollisionShape2D
+Area2D
+CanvasLayer
+Label
+Polygon2D
 MarginContainer
 TabContainer
 VBoxContainer
@@ -8,8 +13,3 @@ CollisionPolygon2D
 StaticBody2D
 Timer
 TextureRect
-Line2D
-ColorRect
-CheckButton
-Panel
-ScrollContainer

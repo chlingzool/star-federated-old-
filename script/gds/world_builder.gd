@@ -10,13 +10,14 @@ extends Node2D
 @export var arm_tightness: float = 200 # 旋臂紧密度
 @export var core_radius: float = 40000 # 核心半径
 @export var galaxy_radius: float = 60000000 # 银河半径
-@export var min_distance: float = 60000 # 最小距离，防止星球过近
+@export var min_distance: float = 100000 # 最小距离，防止星球过近
 
 enum PlantType {
 	TP, # 类地行星
 	GAS, # 气态行星
 	ICE, # 冰态行星
-	ROCK # 岩石行星
+	ROCK, # 岩石行星
+	WATER # 水态行星
 }
 
 var plants: Array = []
@@ -34,6 +35,8 @@ func match_type(plant_: Node, type: PlantType) -> void:
 			plant_.set_meta("plant_type", "ice")
 		PlantType.ROCK:
 			plant_.set_meta("plant_type", "rock")
+		PlantType.WATER:
+			plant_.set_meta("plant_type", "water")
 
 func gen_soft_gas_fog(radius: float, seed_: int, plant_: Node = null, alpha: float = 0.16, segments: int = 64) -> Polygon2D:
 	var base_color = Color(0.8, 0.95, 1.0)
@@ -101,11 +104,12 @@ func found():
 
 		# 类型
 		var type
-		match randi() % 4:
+		match randi() % 5:
 			0: type = PlantType.TP
 			1: type = PlantType.GAS
 			2: type = PlantType.ICE
 			3: type = PlantType.ROCK
+			4: type = PlantType.WATER
 		match_type(plant_instance, type)
 		var cb_seed = randi()
 		plant_instance.seed_ = cb_seed

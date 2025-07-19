@@ -1,4 +1,3 @@
-res://node/res/tree/tree.gd
 res://node/start/boot.tscn
 res://node/ui/message/warning.tres
 res://node/ui/message/error.tres
@@ -14,3 +13,5 @@ res://node/ui/messages.tscn
 res://spaceship/kat3/kat3.tscn
 res://node/res/tree/tree.tscn
 res://node/world/module/cb_main.gd
+res://node/res/tree/tree.gd
+res://script/gds/world_builder.gd
