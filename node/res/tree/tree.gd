@@ -19,10 +19,6 @@ func update_tree():
 	if not seed_:
 		seed_ = randi()  # 如果没有设置种子，则随机生成
 	random.seed = seed_
-	# 清理已有子节点
-	for child in get_children():
-		child.queue_free()
-
 	# 树干
 	var trunk = ColorRect.new()
 	trunk.color = trunk_color
@@ -62,3 +58,9 @@ func update_tree():
 	crown2.position = Vector2(0,0)
 	crown2.z_index = 0
 	add_child(crown2)
+
+func _on_areatree_area_entered(area: Area2D) -> void:
+	if area.name == "area-player": $tap.visible = true
+
+func _on_areatree_area_exited(area: Area2D) -> void:
+	if area.name == "area-player": $tap.visible = false

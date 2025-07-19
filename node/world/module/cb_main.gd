@@ -44,7 +44,7 @@ func found() -> void:
 	noise.fractal_lacunarity = 0.05
 	noise.fractal_gain = 0.5
 	updata_for_noise(noise)
-	mass = (density / 100) * 4/3 * PI * (radius ** 3)
+	mass = (density / 960) * 4/3 * PI * (radius ** 3)
 	gravity = mass / (radius ** 2)
 	$cb_area/CollisionShape.shape.radius = radius * gravity
 	$cb_area.gravity_point_unit_distance = gravity
@@ -65,6 +65,13 @@ func found() -> void:
 		"rock":
 			var _color = [Color.CHOCOLATE, Color.DARK_GOLDENROD, Color.GOLDENROD, Color.PERU, Color.FIREBRICK][randi() % 5]
 			color = _color
+		"water":
+			var _color = [Color.AQUA, Color.LIGHT_BLUE, Color.DARK_TURQUOISE][randi() % 3]
+			color = _color
+			# 水态行星实体缩小一半
+			$polygon.scale = Vector2(0.5, 0.5)
+			$CollisionPolygon.scale = Vector2(0.5, 0.5)
+			$LightOccluder.scale = Vector2(0.5, 0.5)
 	$polygon.color = color
 
 func updata_for_noise(noise: FastNoiseLite):

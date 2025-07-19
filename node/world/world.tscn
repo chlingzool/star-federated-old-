@@ -5,3 +5,4 @@
 [node name="root" type="Node2D"]
 script = ExtResource("1_5yb3h")
 count = 20
+min_distance = 60000.0
