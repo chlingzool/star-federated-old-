@@ -1,10 +1,10 @@
 extends RigidBody2D
 
-@export var speed: float = 3000.0 # 移动速度
-@export var ground_speed: float = 100.0 # 地面移动速度
-@onready var rotation_speed := 6000.0  # 每秒旋转角度
+@export var speed: float = 4800.0 # 移动速度
+@export var ground_speed: float = 120.0 # 地面移动速度
+@onready var rotation_speed := 12000.0  # 每秒旋转角度
 
-@export var ground_friction: float = 10.0 # 地面摩擦系数
+@export var ground_friction: float = 20.0 # 地面摩擦系数
 @export var ground_accel: float = 1000.0 # 地面加速度
 
 var facing_right := true # 是否面向右侧

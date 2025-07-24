@@ -22,7 +22,7 @@ var mass: float = 0.0  # 质量
 @export_subgroup("forest") # 森林分布参数
 var tree_scene: PackedScene = preload("res://node/res/tree/tree.tscn") # 用于实例化树的场景
 @export var forest_ratio: float = 0.2 # 森林占表面比例
-@export var base_tree_density: float = 0.0022 # 每单位周长的树密度（可调节）
+@export var base_tree_density: float = 0.002 # 每单位周长的树密度（可调节）
 @export var tree_offset: float = 120.0 # 树浮在表面距离
 @export var plain_color: Color = Color(1, 1, 0.9) # 平原区域色
 @export var forest_color: Color = Color(0.8, 1.0, 0.86) # 森林区域色
@@ -52,7 +52,7 @@ func found() -> void:
 	noise.fractal_lacunarity = 0.05
 	noise.fractal_gain = 0.5
 	updata_for_noise(noise)
-	mass = (density / 960) * 4/3 * PI * (radius ** 3)
+	mass = (density / 720) * 4/3 * PI * (radius ** 3)
 	gravity = mass / (radius ** 2)
 	$cb_area/CollisionShape.shape.radius = radius * gravity
 	$cb_area.gravity_point_unit_distance = gravity

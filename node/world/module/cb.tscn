@@ -10,7 +10,7 @@ absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8cbx"]
 resource_local_to_scene = true
-radius = 1047.2
+radius = 1636.25
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_j2p8m"]
 resource_local_to_scene = true
@@ -22,18 +22,21 @@ visibility_layer = 513
 physics_material_override = SubResource("PhysicsMaterial_j2p8m")
 script = ExtResource("1_u8cbx")
 color = Color(0.654232, 0.654232, 0.654232, 1)
-forest_ratio = 0.24
-plain_color = Color(0.73268, 0.70619, 0, 1)
-forest_color = Color(0, 0.567542, 0.314252, 1)
+visualization = true
+base_tree_density = 0.0022
+plain_color = Color(0, 0.699925, 0.437323, 1)
+forest_color = Color(0.727232, 0.538955, 0, 1)
 metadata/plant_type = ""
+
+[node name="root" type="Node2D" parent="."]
 
 [node name="cb_area" type="Area2D" parent="."]
 gravity_space_override = 1
 gravity_point = true
-gravity_point_unit_distance = 2.0944
+gravity_point_unit_distance = 3.27249
 gravity_point_center = Vector2(0, 0)
 gravity_direction = Vector2(0, 0)
-gravity = 2.0944
+gravity = 3.27249
 
 [node name="CollisionShape" type="CollisionShape2D" parent="cb_area"]
 shape = SubResource("CircleShape2D_u8cbx")

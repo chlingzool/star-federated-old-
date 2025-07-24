@@ -16,7 +16,7 @@ polygon = PackedVector2Array(-10, -52, -10, 52, 29, 52, 29, -52)
 size = Vector2(39, 105)
 
 [node name="CharacterBody2D" type="RigidBody2D"]
-mass = 50.0
+mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_i33hl")
 script = ExtResource("1_i33hl")
 
@@ -40,4 +40,5 @@ texture = ExtResource("1_66qbe")
 
 [node name="RayCast" type="RayCast2D" parent="."]
 position = Vector2(9, 0)
-target_position = Vector2(0, 60)
+target_position = Vector2(0, 62)
+hit_from_inside = true

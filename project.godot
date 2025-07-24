@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="star federated"
-config/version="0.0.8"
+config/version="0.0.9"
 run/main_scene="uid://wkj07ebpq36p"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "Mobile")
@@ -35,7 +35,7 @@ window/size/mode=3
 window/size/sharp_corners=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-window/stretch/scale=1.1
+window/stretch/scale=1.08
 window/stretch/scale_mode="integer"
 
 [editor]
@@ -51,6 +51,10 @@ folder_colors={
 "res://script/": "green",
 "res://spaceship/": "red"
 }
+
+[global_group]
+
+res=""
 
 [gui]
 
@@ -138,11 +142,15 @@ common/physics_ticks_per_second=120
 common/max_physics_steps_per_frame=16
 2d/physics_engine="GodotPhysics2D"
 2d/default_gravity_vector=Vector2(0, 0)
+2d/default_linear_damp=0.6
+2d/default_angular_damp=0.8
 2d/solver/solver_iterations=64
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true
 textures/lossless_compression/force_png=true
 global_illumination/voxel_gi/quality=1
 viewport/hdr_2d=true

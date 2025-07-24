@@ -12,6 +12,9 @@ extends Node2D
 
 var random := RandomNumberGenerator.new()
 
+signal tree_tapped(tree: Node2D)
+var tap_count = 0 # 点击次数
+
 func _ready():
 	update_tree()
 
@@ -64,3 +67,17 @@ func _on_areatree_area_entered(area: Area2D) -> void:
 
 func _on_areatree_area_exited(area: Area2D) -> void:
 	if area.name == "area-player": $tap.visible = false
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") and not MainScript.is_drive["is"] and $tap.visible:
+		emit_signal("tree_tapped", self)
+
+func _on_tree_tapped(_tree: Node2D) -> void:
+	var wood = preload("res://node/res/tree/wood.tscn").instantiate().duplicate()
+	wood.position = global_position + Vector2(0, trunk_height * 0.5) # 放在树干上
+	wood.rotation = randf_range(0, TAU) # 随机旋转
+	wood.name = "Wood_%d" % rand_from_seed(seed_)[0]
+	tap_count += 1
+	get_tree().get_nodes_in_group("res")[0].add_child(wood)
+	if tap_count >= 3:
+		queue_free()
