@@ -1,14 +1,16 @@
 extends Control
 
+@onready var version = $PanelContainer/MarginContainer/HBoxContainer/version
+@export var branch_and_unit := "4A"
+@export var offering := "beta2"
+@export var patch : int
+
 func _ready() -> void:
 	show()
+	version.text = "v" + ProjectSettings.get_setting("application/config/version") + "." + str(patch) + " " + offering + " (" + branch_and_unit + ")"
 
-func _process(_delta: float) -> void:
-	var xy = $"../../players/self".position
-	var xy_text = "		X: "+str(int(xy.x))+"	Y: "+str(int(xy.y))
-	$PanelContainer/HBoxContainer/xy.text = xy_text
-	
-	if Input.is_action_just_pressed("quit"):
+func _input(event: InputEvent) -> void:
+	if event.is_action("quit"):
 		MainScript.is_drive["is"] = false
 		MainScript.is_drive["who"] = ""
 		get_tree().call_deferred("change_scene_to_file", "res://node/start/#.tscn")
