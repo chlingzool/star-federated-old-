@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dnrox0e2qbdvx" path="res://node/start/settings.gd" id="1_vxmye"]
 
-[node name="Control" type="Control"]
+[node name="main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -13,16 +13,16 @@ dest_files=["res://.godot/imported/Hermit-medium-1.otf-90d6569660c725750aa826b29
 [params]
 
 Rendering=null
-antialiasing=2
+antialiasing=1
 generate_mipmaps=true
-disable_embedded_bitmaps=true
+disable_embedded_bitmaps=false
 multichannel_signed_distance_field=true
-msdf_pixel_range=16
+msdf_pixel_range=18
 msdf_size=64
 allow_system_fallback=true
-force_autohinter=true
-hinting=2
-subpixel_positioning=4
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null

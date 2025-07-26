@@ -1,3 +1,9 @@
+LightOccluder2D
+SubViewport
+CanvasLayer
+CanvasModulate
+PointLight2D
+ColorRect
 Label
 MarginContainer
 Node2D
@@ -7,8 +13,3 @@ Path2D
 Sprite2D
 Polygon2D
 StaticBody2D
-Area2D
-CollisionShape2D
-CanvasLayer
-TabContainer
-VBoxContainer

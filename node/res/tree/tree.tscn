@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fueac"]
 size = Vector2(102, 120)
 
-[node name="Node2D" type="Node2D"]
+[node name="node" type="Node2D"]
 script = ExtResource("1_fueac")
 seed_ = 4042097249
 

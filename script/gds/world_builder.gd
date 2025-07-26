@@ -1,4 +1,3 @@
-@tool
 extends Node2D
 
 @export var base_seed: int # 基础种子

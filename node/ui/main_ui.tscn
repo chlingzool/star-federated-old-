@@ -16,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_hnesk")
-patch = 43
+patch = 44
 
 [node name="PanelContainer" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 20)

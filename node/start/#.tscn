@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c73ibp3d5ltcq"]
+[gd_scene load_steps=11 format=3 uid="uid://c73ibp3d5ltcq"]
 
 [ext_resource type="Texture2D" uid="uid://ceqhw07nisg0a" path="res://assrt/icon/star federated标题.svg" id="1_5r2ix"]
 
@@ -22,7 +22,7 @@ volumetric_fog_enabled = true
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_cled0"]
 output_port_for_preview = 0
-constant = Color(10, 10, 0.698, 1)
+constant = Color(10, 10, 0.7, 1)
 
 [sub_resource type="VisualShader" id="VisualShader_s6tae"]
 code = "shader_type canvas_item;
@@ -33,7 +33,7 @@ render_mode blend_mix;
 
 void fragment() {
 // ColorConstant:2
-	vec4 n_out2p0 = vec4(10.000000, 10.000000, 0.698000, 1.000000);
+	vec4 n_out2p0 = vec4(10.000000, 10.000000, 0.700000, 1.000000);
 
 
 // Output:0
@@ -50,6 +50,15 @@ nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6gftl"]
 shader = SubResource("VisualShader_s6tae")
+
+[sub_resource type="Gradient" id="Gradient_5r2ix"]
+colors = PackedColorArray(0.975656, 0.999999, 0.92057, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cled0"]
+gradient = SubResource("Gradient_5r2ix")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [sub_resource type="GDScript" id="GDScript_5r2ix"]
 script/source = "extends HBoxContainer
@@ -73,9 +82,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5r2ix")
 
@@ -96,6 +102,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.141176, 0.141176, 0.141176, 1)
 
+[node name="CanvasModulate" type="CanvasModulate" parent="back"]
+color = Color(0, 0, 0, 1)
+
 [node name="top" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -103,6 +112,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="top"]
 layout_mode = 1
@@ -127,6 +137,12 @@ size_flags_vertical = 2
 texture = ExtResource("1_5r2ix")
 stretch_mode = 5
 
+[node name="PointLight2D" type="PointLight2D" parent="top/MarginContainer/VBox/TextureRect"]
+position = Vector2(547, -91)
+scale = Vector2(1221, 232)
+texture = SubResource("GradientTexture2D_cled0")
+texture_scale = 0.4
+
 [node name="ScrollContainer" type="ScrollContainer" parent="top/MarginContainer/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -146,6 +162,7 @@ size_flags_vertical = 4
 text = "start"
 
 [node name="settings" type="Button" parent="top/MarginContainer/VBox/ScrollContainer/HBox"]
+visible = false
 custom_minimum_size = Vector2(320, 56)
 layout_mode = 2
 size_flags_horizontal = 6
