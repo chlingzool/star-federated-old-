@@ -1,6 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://chmmc0cmbj1g1"]
+[gd_scene load_steps=6 format=3 uid="uid://chmmc0cmbj1g1"]
 
 [ext_resource type="Script" uid="uid://dnrox0e2qbdvx" path="res://node/start/settings.gd" id="1_vxmye"]
+[ext_resource type="Texture2D" uid="uid://bh62stjx6rtyn" path="res://assrt/light/2d_lights_and_shadows_neutral_point_light.webp" id="2_awe56"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_vxmye"]
+
+[sub_resource type="Sky" id="Sky_cled0"]
+sky_material = SubResource("PhysicalSkyMaterial_vxmye")
+
+[sub_resource type="Environment" id="Environment_awe56"]
+background_mode = 3
+sky = SubResource("Sky_cled0")
+tonemap_mode = 1
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+fog_enabled = true
+volumetric_fog_enabled = true
 
 [node name="main" type="Control"]
 layout_mode = 3
@@ -11,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vxmye")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="back" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +38,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.262745, 0.262745, 0.262745, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="back"]
+environment = SubResource("Environment_awe56")
+
+[node name="canvasmodulate" type="CanvasModulate" parent="back"]
+color = Color(0, 0, 0, 1)
 
 [node name="m" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -47,17 +72,26 @@ metadata/_tab_index = 0
 [node name="s" type="ScrollContainer" parent="m/bar/m"]
 layout_mode = 2
 
-[node name="options" type="VBoxContainer" parent="m/bar/m/s"]
+[node name="MarginContainer" type="MarginContainer" parent="m/bar/m/s"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="options" type="VBoxContainer" parent="m/bar/m/s/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 15
 
-[node name="Panel" type="Panel" parent="m/bar/m/s/options"]
+[node name="Panel" type="Panel" parent="m/bar/m/s/MarginContainer/options"]
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="m/bar/m/s/options/Panel"]
+[node name="CheckButton" type="CheckButton" parent="m/bar/m/s/MarginContainer/options/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,14 +99,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel2" type="Panel" parent="m/bar/m/s/options"]
+[node name="PointLight2D" type="PointLight2D" parent="m/bar/m/s/MarginContainer/options/Panel"]
+position = Vector2(900, 24)
+scale = Vector2(9, 1)
+energy = 2.0
+texture = ExtResource("2_awe56")
+
+[node name="Panel2" type="Panel" parent="m/bar/m/s/MarginContainer/options"]
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="m/bar/m/s/options/Panel2"]
+[node name="CheckButton" type="CheckButton" parent="m/bar/m/s/MarginContainer/options/Panel2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="m/bar/m/s/MarginContainer/options/Panel2"]
+position = Vector2(900, 24)
+scale = Vector2(9, 1)
+energy = 2.0
+texture = ExtResource("2_awe56")

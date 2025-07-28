@@ -1,15 +1,15 @@
 extends Node2D
 
-@export var base_seed: int # 基础种子
+@onready var base_seed: int = MainScript.world_builder_seed # 基础种子
 @export var count: int = 8 # 数量
 @export var planet_radius: float = 12000 # 行星半径
-@export var planet_radius_var: float = 3.8 # 行星半径变化
+@export var planet_radius_var: float = 3.2 # 行星半径变化
 @export var arm_count: int = 4 # 旋臂数量
 @export var arm_spread: float = 0.4 # 旋臂分布
 @export var arm_tightness: float = 200 # 旋臂紧密度
 @export var core_radius: float = 40000 # 核心半径
 @export var galaxy_radius: float = 60000000 # 银河半径
-@export var min_distance: float = 2400000 # 最小距离，防止星球过近
+@export var min_distance: float = 3200000 # 最小距离，防止星球过近
 
 enum PlantType {
 	TP, # 类地行星
@@ -58,6 +58,7 @@ func gen_soft_gas_fog(radius: float, seed_: int, plant_: Node = null, alpha: flo
 	return fog
 
 func _ready() -> void:
+	seed(base_seed)
 	found()
 
 func found():

@@ -1,6 +1,7 @@
 extends Node
 
 var is_drive: Dictionary = {"is": false, "who": "", "position": Vector2(0, 0)}
+var world_builder_seed: int
 
 var tween: Tween
 

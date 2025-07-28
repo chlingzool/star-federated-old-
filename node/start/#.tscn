@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://c73ibp3d5ltcq"]
+[gd_scene load_steps=10 format=3 uid="uid://c73ibp3d5ltcq"]
 
 [ext_resource type="Texture2D" uid="uid://ceqhw07nisg0a" path="res://assrt/icon/star federated标题.svg" id="1_5r2ix"]
+[ext_resource type="Texture2D" uid="uid://bh62stjx6rtyn" path="res://assrt/light/2d_lights_and_shadows_neutral_point_light.webp" id="2_cled0"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_5r2ix"]
 
-[sub_resource type="Sky" id="Sky_cled0"]
+[sub_resource type="Sky" id="Sky_5r2ix"]
 sky_material = SubResource("PhysicalSkyMaterial_5r2ix")
 
 [sub_resource type="Environment" id="Environment_5r2ix"]
 background_mode = 3
-sky = SubResource("Sky_cled0")
+sky = SubResource("Sky_5r2ix")
 tonemap_mode = 1
 ssr_enabled = true
 ssao_enabled = true
@@ -51,27 +52,17 @@ nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6gftl"]
 shader = SubResource("VisualShader_s6tae")
 
-[sub_resource type="Gradient" id="Gradient_5r2ix"]
-colors = PackedColorArray(0.975656, 0.999999, 0.92057, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cled0"]
-gradient = SubResource("Gradient_5r2ix")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
-
 [sub_resource type="GDScript" id="GDScript_5r2ix"]
 script/source = "extends HBoxContainer
 
 func _on_start_button_up() -> void:
-	get_tree().call_deferred(\"change_scene_to_file\", \"res://node/world/node.tscn\")
-
-func _on_exit_button_up() -> void:
-	get_tree().call_deferred(\"quit\", 0)
-
+	get_tree().call_deferred(\"change_scene_to_file\", \"res://node/start/option.tscn\")
 
 func _on_settings_button_up() -> void:
 	get_tree().call_deferred(\"change_scene_to_file\", \"res://node/start/settings.tscn\")
+
+func _on_exit_button_up() -> void:
+	get_tree().call_deferred(\"quit\", 0)
 "
 
 [node name="main" type="Control"]
@@ -102,7 +93,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.141176, 0.141176, 0.141176, 1)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="back"]
+[node name="canvasmodulate" type="CanvasModulate" parent="back"]
 color = Color(0, 0, 0, 1)
 
 [node name="top" type="Control" parent="."]
@@ -138,10 +129,10 @@ texture = ExtResource("1_5r2ix")
 stretch_mode = 5
 
 [node name="PointLight2D" type="PointLight2D" parent="top/MarginContainer/VBox/TextureRect"]
-position = Vector2(547, -91)
-scale = Vector2(1221, 232)
-texture = SubResource("GradientTexture2D_cled0")
-texture_scale = 0.4
+position = Vector2(315, 148)
+energy = 2.0
+texture = ExtResource("2_cled0")
+texture_scale = 8.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="top/MarginContainer/VBox"]
 layout_mode = 2

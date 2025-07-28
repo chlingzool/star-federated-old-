@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://hhprk4i7f1hj"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://hhprk4i7f1hj"]
 
 [ext_resource type="StyleBox" uid="uid://4hx6mnjdwctl" path="res://assrt/theme/button/disabled.tres" id="1_sp1fr"]
 [ext_resource type="StyleBox" uid="uid://dk4fy2gxr0wxh" path="res://assrt/theme/button/hover.tres" id="2_sp1fr"]
@@ -9,6 +9,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ocitb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06ukw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f6cud"]
 
 [resource]
 Button/colors/font_color = Color(4, 4, 4, 1)
@@ -22,6 +24,11 @@ Button/styles/focus = SubResource("StyleBoxEmpty_ocitb")
 Button/styles/hover = ExtResource("2_sp1fr")
 Button/styles/normal = ExtResource("3_f6cud")
 Button/styles/pressed = ExtResource("4_f6cud")
+CheckBox/styles/hover_pressed = ExtResource("2_sp1fr")
 CheckButton/styles/focus = SubResource("StyleBoxEmpty_06ukw")
-CheckButton/styles/hover_pressed = ExtResource("5_f6cud")
+CheckButton/styles/hover_pressed = ExtResource("2_sp1fr")
 CheckButton/styles/pressed = ExtResource("5_f6cud")
+LineEdit/colors/caret_color = Color(4.5, 4.5, 4.5, 1)
+LineEdit/colors/font_color = Color(4, 4, 4, 1)
+LineEdit/constants/caret_width = 2
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_f6cud")
