@@ -129,7 +129,7 @@ texture = ExtResource("1_5r2ix")
 stretch_mode = 5
 
 [node name="PointLight2D" type="PointLight2D" parent="top/MarginContainer/VBox/TextureRect"]
-position = Vector2(315, 148)
+position = Vector2(518, 148)
 energy = 2.0
 texture = ExtResource("2_cled0")
 texture_scale = 8.0
@@ -152,6 +152,11 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 text = "start"
 
+[node name="PointLight2D" type="PointLight2D" parent="top/MarginContainer/VBox/ScrollContainer/HBox/start"]
+position = Vector2(160, 28)
+scale = Vector2(2.26172, 0.769531)
+texture = ExtResource("2_cled0")
+
 [node name="settings" type="Button" parent="top/MarginContainer/VBox/ScrollContainer/HBox"]
 visible = false
 custom_minimum_size = Vector2(320, 56)
@@ -160,12 +165,22 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 text = "settings"
 
+[node name="PointLight2D" type="PointLight2D" parent="top/MarginContainer/VBox/ScrollContainer/HBox/settings"]
+position = Vector2(160, 28)
+scale = Vector2(2.26172, 0.769531)
+texture = ExtResource("2_cled0")
+
 [node name="exit" type="Button" parent="top/MarginContainer/VBox/ScrollContainer/HBox"]
 custom_minimum_size = Vector2(320, 56)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 text = "exit"
+
+[node name="PointLight2D" type="PointLight2D" parent="top/MarginContainer/VBox/ScrollContainer/HBox/exit"]
+position = Vector2(160, 28)
+scale = Vector2(2.26172, 0.769531)
+texture = ExtResource("2_cled0")
 
 [connection signal="button_up" from="top/MarginContainer/VBox/ScrollContainer/HBox/start" to="top/MarginContainer/VBox/ScrollContainer/HBox" method="_on_start_button_up"]
 [connection signal="button_up" from="top/MarginContainer/VBox/ScrollContainer/HBox/settings" to="top/MarginContainer/VBox/ScrollContainer/HBox" method="_on_settings_button_up"]

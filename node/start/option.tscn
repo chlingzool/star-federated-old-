@@ -30,11 +30,13 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action(\"interact\"):
 		get_tree().call_deferred(\"change_scene_to_file\", \"res://node/world/node.tscn\")
+		StartAudio.stream_paused = true
 	elif event.is_action(\"quit\"):
 		get_tree().call_deferred(\"change_scene_to_file\", \"res://node/start/#.tscn\")
 
 func _on_spawn_button_up() -> void:
 	get_tree().call_deferred(\"change_scene_to_file\", \"res://node/world/node.tscn\")
+	StartAudio.stream_paused = true
 
 func _on_quit_button_up() -> void:
 	get_tree().call_deferred(\"change_scene_to_file\", \"res://node/start/#.tscn\")

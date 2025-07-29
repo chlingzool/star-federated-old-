@@ -14,3 +14,4 @@ func _input(event: InputEvent) -> void:
 		MainScript.is_drive["is"] = false
 		MainScript.is_drive["who"] = ""
 		get_tree().call_deferred("change_scene_to_file", "res://node/start/#.tscn")
+		StartAudio.stream_paused = false
