@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c73ibp3d5ltcq"]
+[gd_scene load_steps=9 format=3 uid="uid://c73ibp3d5ltcq"]
 
 [ext_resource type="Texture2D" uid="uid://ceqhw07nisg0a" path="res://assrt/icon/star federated标题.svg" id="1_5r2ix"]
 [ext_resource type="Texture2D" uid="uid://bh62stjx6rtyn" path="res://assrt/light/2d_lights_and_shadows_neutral_point_light.webp" id="2_cled0"]
@@ -21,36 +21,19 @@ glow_enabled = true
 fog_enabled = true
 volumetric_fog_enabled = true
 
-[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_cled0"]
-output_port_for_preview = 0
-constant = Color(10, 10, 0.7, 1)
-
-[sub_resource type="VisualShader" id="VisualShader_s6tae"]
+[sub_resource type="Shader" id="Shader_cled0"]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
-
-
-
 void fragment() {
-// ColorConstant:2
-	vec4 n_out2p0 = vec4(10.000000, 10.000000, 0.700000, 1.000000);
-
-
-// Output:0
+	vec4 n_out2p0 = vec4(10, 10, 0.7, 1);
 	COLOR.rgb = vec3(n_out2p0.xyz);
-
 
 }
 "
-mode = 1
-flags/light_only = false
-nodes/fragment/2/node = SubResource("VisualShaderNodeColorConstant_cled0")
-nodes/fragment/2/position = Vector2(120, 20)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6gftl"]
-shader = SubResource("VisualShader_s6tae")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6tae"]
+shader = SubResource("Shader_cled0")
 
 [sub_resource type="GDScript" id="GDScript_5r2ix"]
 script/source = "extends HBoxContainer
@@ -121,7 +104,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="top/MarginContainer/VBox"]
-material = SubResource("ShaderMaterial_6gftl")
+material = SubResource("ShaderMaterial_s6tae")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
@@ -129,7 +112,7 @@ texture = ExtResource("1_5r2ix")
 stretch_mode = 5
 
 [node name="PointLight2D" type="PointLight2D" parent="top/MarginContainer/VBox/TextureRect"]
-position = Vector2(518, 148)
+position = Vector2(500, 150)
 energy = 2.0
 texture = ExtResource("2_cled0")
 texture_scale = 8.0
@@ -145,6 +128,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = SubResource("GDScript_5r2ix")
 
+[node name="settings" type="Button" parent="top/MarginContainer/VBox/ScrollContainer/HBox"]
+custom_minimum_size = Vector2(320, 56)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "settings"
+
+[node name="PointLight2D" type="PointLight2D" parent="top/MarginContainer/VBox/ScrollContainer/HBox/settings"]
+position = Vector2(160, 28)
+scale = Vector2(2.26172, 0.769531)
+texture = ExtResource("2_cled0")
+
 [node name="start" type="Button" parent="top/MarginContainer/VBox/ScrollContainer/HBox"]
 custom_minimum_size = Vector2(320, 56)
 layout_mode = 2
@@ -153,19 +148,6 @@ size_flags_vertical = 4
 text = "start"
 
 [node name="PointLight2D" type="PointLight2D" parent="top/MarginContainer/VBox/ScrollContainer/HBox/start"]
-position = Vector2(160, 28)
-scale = Vector2(2.26172, 0.769531)
-texture = ExtResource("2_cled0")
-
-[node name="settings" type="Button" parent="top/MarginContainer/VBox/ScrollContainer/HBox"]
-visible = false
-custom_minimum_size = Vector2(320, 56)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-text = "settings"
-
-[node name="PointLight2D" type="PointLight2D" parent="top/MarginContainer/VBox/ScrollContainer/HBox/settings"]
 position = Vector2(160, 28)
 scale = Vector2(2.26172, 0.769531)
 texture = ExtResource("2_cled0")
@@ -182,6 +164,6 @@ position = Vector2(160, 28)
 scale = Vector2(2.26172, 0.769531)
 texture = ExtResource("2_cled0")
 
-[connection signal="button_up" from="top/MarginContainer/VBox/ScrollContainer/HBox/start" to="top/MarginContainer/VBox/ScrollContainer/HBox" method="_on_start_button_up"]
 [connection signal="button_up" from="top/MarginContainer/VBox/ScrollContainer/HBox/settings" to="top/MarginContainer/VBox/ScrollContainer/HBox" method="_on_settings_button_up"]
+[connection signal="button_up" from="top/MarginContainer/VBox/ScrollContainer/HBox/start" to="top/MarginContainer/VBox/ScrollContainer/HBox" method="_on_start_button_up"]
 [connection signal="button_up" from="top/MarginContainer/VBox/ScrollContainer/HBox/exit" to="top/MarginContainer/VBox/ScrollContainer/HBox" method="_on_exit_button_up"]

@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 
 	if MainScript.is_drive["is"]:
-		#MainScript.screen_shake(1, 0.1)
+		MainScript.screen_shake(1, 0.1)
 
 		# 控制转身
 		if Input.is_action_just_pressed("turn"):

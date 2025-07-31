@@ -1,8 +1,11 @@
-res://node/start/boot.tscn
+res://script/music_bus/default_bus_layout.tres
+res://node/start/#.tscn
+res://assrt/theme/main.tres
 res://node/ui/message/warning.tres
 res://node/ui/message/error.tres
 res://script/shader/outline.gdshader
-res://node/start/#.tscn
+res://script/shader/#title.gdshader
+res://node/start/boot.tscn
 res://node/start/settings.tscn
 res://node/start/option.tscn
 res://node/world/node.tscn
@@ -14,6 +17,4 @@ res://node/ui/messages.tscn
 res://spaceship/kat3/kat3.tscn
 res://node/res/tree/tree.tscn
 res://node/res/tree/wood.tscn
-res://default_bus_layout.tres
 res://node/global/start_audio.tscn
-res://node/ui/main_ui.gd

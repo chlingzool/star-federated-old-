@@ -13,5 +13,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action("quit"):
 		MainScript.is_drive["is"] = false
 		MainScript.is_drive["who"] = ""
+		MainScript.tween.kill()
+		await get_tree().create_timer(0.1).timeout
 		get_tree().call_deferred("change_scene_to_file", "res://node/start/#.tscn")
 		StartAudio.stream_paused = false
