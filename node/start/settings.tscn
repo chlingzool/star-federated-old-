@@ -93,7 +93,7 @@ theme_override_constants/separation = 32
 [node name="Label" type="Label" parent="m/bar/m/s/MarginContainer/options"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "what"
+text = "MUSIC"
 label_settings = SubResource("LabelSettings_awe56")
 vertical_alignment = 2
 
@@ -121,7 +121,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="m/bar/m/s/MarginContainer/options/BGM/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-text = "aaaaaaaaaaaaaaaaaaaaaaaaa"
+text = "BGM"
 
 [node name="bgm" type="HSlider" parent="m/bar/m/s/MarginContainer/options/BGM/HBoxContainer"]
 unique_name_in_owner = true

@@ -1,11 +1,11 @@
 res://script/music_bus/default_bus_layout.tres
-res://node/start/#.tscn
+res://node/start/boot.tscn
 res://assrt/theme/main.tres
 res://node/ui/message/warning.tres
 res://node/ui/message/error.tres
 res://script/shader/outline.gdshader
 res://script/shader/#title.gdshader
-res://node/start/boot.tscn
+res://node/start/#.tscn
 res://node/start/settings.tscn
 res://node/start/option.tscn
 res://node/world/node.tscn
