@@ -1,7 +1,10 @@
+PointLight2D
+Polygon2D
+CollisionShape2D
+CollisionPolygon2D
 HBoxContainer
 Label
 HSlider
-PointLight2D
 HSeparator
 AudioStreamPlayer
 VBoxContainer
@@ -9,6 +12,3 @@ MarginContainer
 LineEdit
 Panel
 Button
-ScrollContainer
-LightOccluder2D
-SubViewport

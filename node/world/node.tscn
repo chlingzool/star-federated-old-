@@ -16,11 +16,6 @@
 [node name="node" parent="root" instance=ExtResource("1_p558b")]
 planet_radius = 5000.0
 planet_radius_var = 2.5
-arm_count = 5
-arm_spread = 0.1
-arm_tightness = 0.1
-core_radius = 10000.0
-galaxy_radius = 1e+06
 
 [node name="res_root" type="Node2D" parent="root" groups=["res"]]
 unique_name_in_owner = true

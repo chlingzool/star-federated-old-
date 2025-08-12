@@ -28,8 +28,6 @@ plain_color = Color(0, 0.699925, 0.437323, 1)
 forest_color = Color(0.727232, 0.538955, 0, 1)
 metadata/plant_type = ""
 
-[node name="root" type="Node2D" parent="."]
-
 [node name="cb_area" type="Area2D" parent="."]
 gravity_space_override = 1
 gravity_point = true
